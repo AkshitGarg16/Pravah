@@ -6,7 +6,7 @@
          have to take on trust from the metrics. -->
     <scheme name="pravah-busy">
         <opengl dither="0" fps="0" drawBoundaries="0"/>
-        <background backgroundColor="24,26,30" showGrid="0" showRails="1"/>
+        <background backgroundColor="255,255,255" showGrid="0" showRails="1"/>
         <edges laneEdgeMode="1" scaleMode="0" laneShowBorders="1" showLinkDecals="1"
                showRails="1" hideConnectors="0" widthExaggeration="1.2">
             <colorScheme name="by allowed speed">

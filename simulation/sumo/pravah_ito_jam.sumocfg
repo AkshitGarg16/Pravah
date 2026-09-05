@@ -1,0 +1,29 @@
+<configuration>
+    <input>
+        <net-file value="network/pravah.net.xml"/>
+        <route-files value="routes/pravah_busy.rou.xml"/>
+        <additional-files value="additional/pravah_vtypes.add.xml,additional/pravah_jam_tls.add.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="0.2"/>
+    </time>
+    <processing>
+        <!-- Sublane model: two-wheelers filtering alongside cars is how an
+             Indian arterial actually packs vehicles in, and it is also what
+             keeps a busy approach from behaving like a single-file queue. -->
+        <lateral-resolution value="0.8"/>
+        <time-to-teleport value="120"/>
+        <collision.action value="warn"/>
+        <!-- A vehicle that has blocked a junction this long is let through
+             rather than left to hold a deadlock forever. Without it a single
+             junction-blocking vehicle can lock a whole ring of streets, which
+             is a simulation artefact, not traffic. -->
+        <ignore-junction-blocker value="20"/>
+    </processing>
+    <report>
+        <no-step-log value="true"/>
+        <duration-log.statistics value="true"/>
+    </report>
+</configuration>

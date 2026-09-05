@@ -1,0 +1,3980 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<sdf version="1.6">
+  <world name="pravah">
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics" />
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster" />
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands" />
+    <light type="directional" name="sun">
+      <pose>264.7 805.1 200 0 0 0</pose>
+      <diffuse>0.9 0.9 0.9 1</diffuse>
+      <specular>0.3 0.3 0.3 1</specular>
+      <direction>-0.3 0.2 -0.9</direction>
+      <cast_shadows>false</cast_shadows>
+    </light>
+    <model name="ground">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <pose>264.7 805.1 0 0 0 0</pose>
+          <geometry>
+            <plane>
+              <size>640.0 640.0</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.32 0.29 0.24 1</ambient>
+            <diffuse>0.32 0.29 0.24 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <size>640.0 640.0</size>
+            </plane>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="road_network">
+      <static>true</static>
+      <link name="link">
+        <visual name="seg_0">
+          <pose>266.615 730.865 0.030 0 0 1.3766</pose>
+          <geometry>
+            <box>
+              <size>2.436 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_1">
+          <pose>267.370 733.082 0.030 0 0 1.1003</pose>
+          <geometry>
+            <box>
+              <size>2.294 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_2">
+          <pose>268.692 734.955 0.030 0 0 0.8141</pose>
+          <geometry>
+            <box>
+              <size>2.338 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_3">
+          <pose>270.587 736.480 0.030 0 0 0.5534</pose>
+          <geometry>
+            <box>
+              <size>2.568 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_4">
+          <pose>264.938 732.990 0.030 0 0 1.5233</pose>
+          <geometry>
+            <box>
+              <size>6.427 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_5">
+          <pose>265.078 738.775 0.030 0 0 1.5757</pose>
+          <geometry>
+            <box>
+              <size>5.150 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_6">
+          <pose>264.973 743.925 0.030 0 0 1.6067</pose>
+          <geometry>
+            <box>
+              <size>5.153 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_7">
+          <pose>264.782 749.720 0.030 0 0 1.6011</pose>
+          <geometry>
+            <box>
+              <size>6.443 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_8">
+          <pose>263.275 733.088 0.030 0 0 1.5442</pose>
+          <geometry>
+            <box>
+              <size>6.397 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_9">
+          <pose>262.995 738.760 0.030 0 0 1.7172</pose>
+          <geometry>
+            <box>
+              <size>5.004 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_10">
+          <pose>261.668 743.550 0.030 0 0 1.9648</pose>
+          <geometry>
+            <box>
+              <size>5.014 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_11">
+          <pose>258.998 748.572 0.030 0 0 2.1335</pose>
+          <geometry>
+            <box>
+              <size>6.402 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_12">
+          <pose>304.230 737.115 0.030 0 0 -0.5244</pose>
+          <geometry>
+            <box>
+              <size>3.755 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_13">
+          <pose>307.023 735.190 0.030 0 0 -0.7008</pose>
+          <geometry>
+            <box>
+              <size>3.055 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_14">
+          <pose>308.895 733.173 0.030 0 0 -0.9717</pose>
+          <geometry>
+            <box>
+              <size>2.500 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_15">
+          <pose>309.845 731.060 0.030 0 0 -1.3477</pose>
+          <geometry>
+            <box>
+              <size>2.215 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_16">
+          <pose>309.350 740.755 0.030 0 0 -1.4563</pose>
+          <geometry>
+            <box>
+              <size>3.765 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_17">
+          <pose>309.703 737.600 0.030 0 0 -1.4642</pose>
+          <geometry>
+            <box>
+              <size>2.585 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_18">
+          <pose>309.920 735.030 0.030 0 0 -1.5086</pose>
+          <geometry>
+            <box>
+              <size>2.575 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_19">
+          <pose>310.045 731.862 0.030 0 0 -1.5469</pose>
+          <geometry>
+            <box>
+              <size>3.766 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_20">
+          <pose>425.577 691.530 0.030 0 0 -1.9502</pose>
+          <geometry>
+            <box>
+              <size>4.037 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_21">
+          <pose>424.383 688.298 0.030 0 0 -1.8892</pose>
+          <geometry>
+            <box>
+              <size>2.859 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_22">
+          <pose>423.260 685.755 0.030 0 0 -2.0886</pose>
+          <geometry>
+            <box>
+              <size>2.728 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_23">
+          <pose>421.173 683.230 0.030 0 0 -2.3825</pose>
+          <geometry>
+            <box>
+              <size>3.894 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_24">
+          <pose>429.618 687.670 0.030 0 0 -2.6752</pose>
+          <geometry>
+            <box>
+              <size>4.003 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_25">
+          <pose>426.588 686.183 0.030 0 0 -2.6999</pose>
+          <geometry>
+            <box>
+              <size>2.749 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_26">
+          <pose>424.160 684.915 0.030 0 0 -2.6206</pose>
+          <geometry>
+            <box>
+              <size>2.732 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_27">
+          <pose>421.368 683.062 0.030 0 0 -2.5114</pose>
+          <geometry>
+            <box>
+              <size>3.979 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_28">
+          <pose>317.210 589.690 0.030 0 0 -2.1311</pose>
+          <geometry>
+            <box>
+              <size>5.005 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_29">
+          <pose>314.810 586.120 0.030 0 0 -2.2065</pose>
+          <geometry>
+            <box>
+              <size>3.604 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_30">
+          <pose>313.062 583.133 0.030 0 0 -1.9858</pose>
+          <geometry>
+            <box>
+              <size>3.360 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_31">
+          <pose>312.243 579.217 0.030 0 0 -1.6307</pose>
+          <geometry>
+            <box>
+              <size>4.764 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_32">
+          <pose>311.945 585.130 0.030 0 0 -1.5521</pose>
+          <geometry>
+            <box>
+              <size>16.583 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_33">
+          <pose>288.933 887.812 0.030 0 0 -2.1997</pose>
+          <geometry>
+            <box>
+              <size>4.445 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_34">
+          <pose>286.595 884.777 0.030 0 0 -2.2649</pose>
+          <geometry>
+            <box>
+              <size>3.220 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_35">
+          <pose>284.915 882.205 0.030 0 0 -2.0239</pose>
+          <geometry>
+            <box>
+              <size>2.970 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_36">
+          <pose>284.097 878.773 0.030 0 0 -1.6505</pose>
+          <geometry>
+            <box>
+              <size>4.208 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_37">
+          <pose>283.710 884.045 0.030 0 0 -1.5410</pose>
+          <geometry>
+            <box>
+              <size>14.747 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_38">
+          <pose>289.065 708.480 0.030 0 0 -1.5416</pose>
+          <geometry>
+            <box>
+              <size>14.026 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_39">
+          <pose>290.632 713.600 0.030 0 0 -1.4812</pose>
+          <geometry>
+            <box>
+              <size>3.855 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_40">
+          <pose>291.270 710.425 0.030 0 0 -1.2160</pose>
+          <geometry>
+            <box>
+              <size>2.677 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_41">
+          <pose>292.560 708.043 0.030 0 0 -0.9391</pose>
+          <geometry>
+            <box>
+              <size>2.794 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_42">
+          <pose>294.632 705.370 0.030 0 0 -0.8915</pose>
+          <geometry>
+            <box>
+              <size>3.972 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_43">
+          <pose>489.120 805.405 0.030 0 0 -3.1228</pose>
+          <geometry>
+            <box>
+              <size>12.262 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_44">
+          <pose>494.095 805.337 0.030 0 0 -2.9849</pose>
+          <geometry>
+            <box>
+              <size>2.339 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_45">
+          <pose>491.780 804.662 0.030 0 0 -2.7401</pose>
+          <geometry>
+            <box>
+              <size>2.520 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_46">
+          <pose>489.452 803.358 0.030 0 0 -2.5336</pose>
+          <geometry>
+            <box>
+              <size>2.845 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_47">
+          <pose>487.112 801.418 0.030 0 0 -2.3758</pose>
+          <geometry>
+            <box>
+              <size>3.253 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_48">
+          <pose>364.470 803.910 0.030 0 0 -3.1144</pose>
+          <geometry>
+            <box>
+              <size>15.426 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_49">
+          <pose>369.045 801.450 0.030 0 0 2.6751</pose>
+          <geometry>
+            <box>
+              <size>4.758 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_50">
+          <pose>365.180 803.055 0.030 0 0 2.8433</pose>
+          <geometry>
+            <box>
+              <size>3.641 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_51">
+          <pose>361.830 803.735 0.030 0 0 3.0518</pose>
+          <geometry>
+            <box>
+              <size>3.233 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_52">
+          <pose>358.490 803.790 0.030 0 0 -3.0896</pose>
+          <geometry>
+            <box>
+              <size>3.465 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_53">
+          <pose>373.830 816.530 0.030 0 0 0.0190</pose>
+          <geometry>
+            <box>
+              <size>24.204 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_54">
+          <pose>363.903 816.543 0.030 0 0 0.1112</pose>
+          <geometry>
+            <box>
+              <size>4.372 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_55">
+          <pose>368.758 817.425 0.030 0 0 0.2342</pose>
+          <geometry>
+            <box>
+              <size>5.516 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_56">
+          <pose>374.505 819.082 0.030 0 0 0.3205</pose>
+          <geometry>
+            <box>
+              <size>6.459 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_57">
+          <pose>380.900 821.475 0.030 0 0 0.3916</pose>
+          <geometry>
+            <box>
+              <size>7.205 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_58">
+          <pose>204.495 792.700 0.030 0 0 -3.0443</pose>
+          <geometry>
+            <box>
+              <size>26.355 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_59">
+          <pose>213.615 790.355 0.030 0 0 2.8620</pose>
+          <geometry>
+            <box>
+              <size>7.501 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_60">
+          <pose>206.370 791.705 0.030 0 0 3.0553</pose>
+          <geometry>
+            <box>
+              <size>7.307 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_61">
+          <pose>199.480 791.930 0.030 0 0 -3.1139</pose>
+          <geometry>
+            <box>
+              <size>6.502 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_62">
+          <pose>193.805 791.630 0.030 0 0 -3.0552</pose>
+          <geometry>
+            <box>
+              <size>4.868 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_63">
+          <pose>556.535 814.280 0.030 0 0 -0.0889</pose>
+          <geometry>
+            <box>
+              <size>4.508 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_64">
+          <pose>561.455 813.700 0.030 0 0 -0.1411</pose>
+          <geometry>
+            <box>
+              <size>5.404 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_65">
+          <pose>564.205 814.845 0.030 0 0 0.0368</pose>
+          <geometry>
+            <box>
+              <size>19.843 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_66">
+          <pose>556.505 814.685 0.030 0 0 0.0923</pose>
+          <geometry>
+            <box>
+              <size>4.449 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_67">
+          <pose>561.340 815.475 0.030 0 0 0.2197</pose>
+          <geometry>
+            <box>
+              <size>5.369 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_68">
+          <pose>553.665 804.280 0.030 0 0 2.9983</pose>
+          <geometry>
+            <box>
+              <size>3.082 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_69">
+          <pose>550.995 804.585 0.030 0 0 3.0675</pose>
+          <geometry>
+            <box>
+              <size>2.296 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_70">
+          <pose>548.700 804.695 0.030 0 0 3.1199</pose>
+          <geometry>
+            <box>
+              <size>2.301 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_71">
+          <pose>546.005 804.775 0.030 0 0 3.1060</pose>
+          <geometry>
+            <box>
+              <size>3.092 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_72">
+          <pose>553.690 804.140 0.030 0 0 3.0883</pose>
+          <geometry>
+            <box>
+              <size>3.004 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_73">
+          <pose>551.110 803.910 0.030 0 0 -2.8621</pose>
+          <geometry>
+            <box>
+              <size>2.247 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_74">
+          <pose>548.975 803.040 0.030 0 0 -2.6536</pose>
+          <geometry>
+            <box>
+              <size>2.389 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_75">
+          <pose>546.495 801.795 0.030 0 0 -2.6935</pose>
+          <geometry>
+            <box>
+              <size>3.162 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_76">
+          <pose>510.060 815.860 0.030 0 0 -0.0247</pose>
+          <geometry>
+            <box>
+              <size>25.088 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_77">
+          <pose>501.980 819.515 0.030 0 0 -0.3394</pose>
+          <geometry>
+            <box>
+              <size>7.360 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_78">
+          <pose>508.790 817.505 0.030 0 0 -0.2308</pose>
+          <geometry>
+            <box>
+              <size>6.862 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_79">
+          <pose>515.075 816.295 0.030 0 0 -0.1433</pose>
+          <geometry>
+            <box>
+              <size>5.951 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_80">
+          <pose>520.310 815.710 0.030 0 0 -0.0698</pose>
+          <geometry>
+            <box>
+              <size>4.591 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_81">
+          <pose>261.457 1096.328 0.030 0 0 1.3622</pose>
+          <geometry>
+            <box>
+              <size>7.559 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_82">
+          <pose>263.092 1103.735 0.030 0 0 1.3449</pose>
+          <geometry>
+            <box>
+              <size>7.613 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_83">
+          <pose>192.325 803.640 0.030 0 0 0.1108</pose>
+          <geometry>
+            <box>
+              <size>24.420 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_84">
+          <pose>182.347 802.712 0.030 0 0 0.1934</pose>
+          <geometry>
+            <box>
+              <size>4.397 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_85">
+          <pose>187.153 804.020 0.030 0 0 0.3226</pose>
+          <geometry>
+            <box>
+              <size>5.583 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_86">
+          <pose>192.798 806.205 0.030 0 0 0.4092</pose>
+          <geometry>
+            <box>
+              <size>6.535 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_87">
+          <pose>199.002 809.180 0.030 0 0 0.4813</pose>
+          <geometry>
+            <box>
+              <size>7.237 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_88">
+          <pose>263.375 880.370 0.030 0 0 1.6011</pose>
+          <geometry>
+            <box>
+              <size>18.829 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_89">
+          <pose>258.120 874.715 0.030 0 0 1.1190</pose>
+          <geometry>
+            <box>
+              <size>5.658 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_90">
+          <pose>260.360 878.992 0.030 0 0 1.0451</pose>
+          <geometry>
+            <box>
+              <size>4.006 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_91">
+          <pose>262.028 882.517 0.030 0 0 1.2168</pose>
+          <geometry>
+            <box>
+              <size>3.822 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_92">
+          <pose>262.890 887.045 0.030 0 0 1.4978</pose>
+          <geometry>
+            <box>
+              <size>5.485 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_93">
+          <pose>278.678 1100.975 0.030 0 0 -1.8163</pose>
+          <geometry>
+            <box>
+              <size>4.464 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_94">
+          <pose>277.988 1096.247 0.030 0 0 -1.6283</pose>
+          <geometry>
+            <box>
+              <size>5.133 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_95">
+          <pose>277.615 1103.070 0.030 0 0 -1.5468</pose>
+          <geometry>
+            <box>
+              <size>18.775 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_96">
+          <pose>282.678 1102.847 0.030 0 0 -0.2736</pose>
+          <geometry>
+            <box>
+              <size>2.758 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_97">
+          <pose>285.822 1103.400 0.030 0 0 0.4708</pose>
+          <geometry>
+            <box>
+              <size>4.079 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_98">
+          <pose>303.035 799.580 0.030 0 0 -3.1094</pose>
+          <geometry>
+            <box>
+              <size>14.297 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_99">
+          <pose>308.612 799.602 0.030 0 0 -3.0100</pose>
+          <geometry>
+            <box>
+              <size>3.162 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_100">
+          <pose>305.972 798.835 0.030 0 0 -2.6604</pose>
+          <geometry>
+            <box>
+              <size>2.420 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_101">
+          <pose>304.317 797.365 0.030 0 0 -2.1402</pose>
+          <geometry>
+            <box>
+              <size>2.161 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_102">
+          <pose>303.645 795.192 0.030 0 0 -1.6420</pose>
+          <geometry>
+            <box>
+              <size>2.531 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_103">
+          <pose>313.055 801.805 0.030 0 0 0.6066</pose>
+          <geometry>
+            <box>
+              <size>6.999 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_104">
+          <pose>316.865 805.755 0.030 0 0 1.1247</pose>
+          <geometry>
+            <box>
+              <size>4.334 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_105">
+          <pose>316.790 809.635 0.030 0 0 2.0540</pose>
+          <geometry>
+            <box>
+              <size>4.348 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_106">
+          <pose>312.835 813.445 0.030 0 0 2.5722</pose>
+          <geometry>
+            <box>
+              <size>6.993 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_107">
+          <pose>302.275 814.975 0.030 0 0 0.0466</pose>
+          <geometry>
+            <box>
+              <size>15.247 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_108">
+          <pose>272.120 798.850 0.030 0 0 2.7284</pose>
+          <geometry>
+            <box>
+              <size>2.839 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_109">
+          <pose>269.850 801.260 0.030 0 0 2.0559</pose>
+          <geometry>
+            <box>
+              <size>4.160 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_110">
+          <pose>268.230 806.210 0.030 0 0 1.7768</pose>
+          <geometry>
+            <box>
+              <size>6.354 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_111">
+          <pose>267.260 813.700 0.030 0 0 1.6437</pose>
+          <geometry>
+            <box>
+              <size>8.783 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_112">
+          <pose>264.960 797.765 0.030 0 0 -3.0808</pose>
+          <geometry>
+            <box>
+              <size>16.951 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_113">
+          <pose>276.065 800.235 0.030 0 0 0.6365</pose>
+          <geometry>
+            <box>
+              <size>6.578 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_114">
+          <pose>279.535 804.055 0.030 0 0 1.1543</pose>
+          <geometry>
+            <box>
+              <size>4.079 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_115">
+          <pose>279.365 807.695 0.030 0 0 2.0817</pose>
+          <geometry>
+            <box>
+              <size>4.070 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_116">
+          <pose>275.550 811.165 0.030 0 0 2.6004</pose>
+          <geometry>
+            <box>
+              <size>6.580 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_117">
+          <pose>265.700 796.505 0.030 0 0 1.5370</pose>
+          <geometry>
+            <box>
+              <size>8.875 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_118">
+          <pose>266.500 804.150 0.030 0 0 1.3710</pose>
+          <geometry>
+            <box>
+              <size>6.550 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_119">
+          <pose>268.295 809.345 0.030 0 0 1.0476</pose>
+          <geometry>
+            <box>
+              <size>4.583 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_120">
+          <pose>271.085 812.095 0.030 0 0 0.4353</pose>
+          <geometry>
+            <box>
+              <size>3.628 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_121">
+          <pose>264.645 805.035 0.030 0 0 1.5174</pose>
+          <geometry>
+            <box>
+              <size>26.027 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_122">
+          <pose>262.145 793.240 0.030 0 0 1.7359</pose>
+          <geometry>
+            <box>
+              <size>2.494 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_123">
+          <pose>261.385 795.320 0.030 0 0 2.1492</pose>
+          <geometry>
+            <box>
+              <size>2.030 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_124">
+          <pose>259.925 796.635 0.030 0 0 2.6670</pose>
+          <geometry>
+            <box>
+              <size>2.035 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_125">
+          <pose>257.760 797.175 0.030 0 0 3.0821</pose>
+          <geometry>
+            <box>
+              <size>2.524 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_126">
+          <pose>263.790 811.930 0.030 0 0 0.1037</pose>
+          <geometry>
+            <box>
+              <size>17.976 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_127">
+          <pose>256.830 811.425 0.030 0 0 0.2114</pose>
+          <geometry>
+            <box>
+              <size>4.050 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_128">
+          <pose>260.210 812.570 0.030 0 0 0.4750</pose>
+          <geometry>
+            <box>
+              <size>3.149 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_129">
+          <pose>262.430 814.315 0.030 0 0 0.8961</pose>
+          <geometry>
+            <box>
+              <size>2.625 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_130">
+          <pose>263.495 816.660 0.030 0 0 1.3873</pose>
+          <geometry>
+            <box>
+              <size>2.685 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_131">
+          <pose>284.655 798.815 0.030 0 0 -3.0940</pose>
+          <geometry>
+            <box>
+              <size>22.495 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_132">
+          <pose>310.940 661.700 0.030 0 0 -1.5583</pose>
+          <geometry>
+            <box>
+              <size>136.571 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_133">
+          <pose>453.080 804.725 0.030 0 0 -3.1227</pose>
+          <geometry>
+            <box>
+              <size>59.831 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_134">
+          <pose>397.675 804.140 0.030 0 0 -3.1408</pose>
+          <geometry>
+            <box>
+              <size>50.990 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_135">
+          <pose>335.810 815.815 0.030 0 0 0.0187</pose>
+          <geometry>
+            <box>
+              <size>51.849 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_136">
+          <pose>334.245 801.770 0.030 0 0 -3.0561</pose>
+          <geometry>
+            <box>
+              <size>45.195 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_137">
+          <pose>310.955 799.825 0.030 0 0 -3.1222</pose>
+          <geometry>
+            <box>
+              <size>1.550 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_138">
+          <pose>205.475 812.697 0.030 0 0 0.5138</pose>
+          <geometry>
+            <box>
+              <size>7.498 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_139">
+          <pose>219.355 822.500 0.030 0 0 0.6434</pose>
+          <geometry>
+            <box>
+              <size>26.536 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_140">
+          <pose>240.005 842.845 0.030 0 0 0.8898</pose>
+          <geometry>
+            <box>
+              <size>31.880 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_141">
+          <pose>253.463 863.700 0.030 0 0 1.1868</pose>
+          <geometry>
+            <box>
+              <size>18.271 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_142">
+          <pose>229.655 807.995 0.030 0 0 0.1187</pose>
+          <geometry>
+            <box>
+              <size>50.747 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_143">
+          <pose>272.720 737.652 0.030 0 0 0.4462</pose>
+          <geometry>
+            <box>
+              <size>2.306 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_144">
+          <pose>278.630 739.350 0.030 0 0 0.2416</pose>
+          <geometry>
+            <box>
+              <size>10.031 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_145">
+          <pose>291.335 740.145 0.030 0 0 -0.0516</pose>
+          <geometry>
+            <box>
+              <size>15.691 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_146">
+          <pose>300.887 738.898 0.030 0 0 -0.4560</pose>
+          <geometry>
+            <box>
+              <size>3.826 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_147">
+          <pose>312.775 564.735 0.030 0 0 -1.5151</pose>
+          <geometry>
+            <box>
+              <size>24.248 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_148">
+          <pose>314.710 537.690 0.030 0 0 -1.4867</pose>
+          <geometry>
+            <box>
+              <size>29.986 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_149">
+          <pose>316.645 512.780 0.030 0 0 -1.5032</pose>
+          <geometry>
+            <box>
+              <size>19.986 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_150">
+          <pose>411.970 675.770 0.030 0 0 -2.4757</pose>
+          <geometry>
+            <box>
+              <size>19.813 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_151">
+          <pose>393.515 664.460 0.030 0 0 -2.6887</pose>
+          <geometry>
+            <box>
+              <size>23.722 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_152">
+          <pose>371.275 650.735 0.030 0 0 -2.5062</pose>
+          <geometry>
+            <box>
+              <size>28.763 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_153">
+          <pose>350.095 632.595 0.030 0 0 -2.3562</pose>
+          <geometry>
+            <box>
+              <size>27.167 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_154">
+          <pose>332.365 612.860 0.030 0 0 -2.2468</pose>
+          <geometry>
+            <box>
+              <size>25.972 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_155">
+          <pose>321.390 597.270 0.030 0 0 -2.0519</pose>
+          <geometry>
+            <box>
+              <size>12.318 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_156">
+          <pose>284.785 855.752 0.030 0 0 -1.5300</pose>
+          <geometry>
+            <box>
+              <size>41.880 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_157">
+          <pose>286.545 812.675 0.030 0 0 -1.5300</pose>
+          <geometry>
+            <box>
+              <size>44.347 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_158">
+          <pose>287.975 762.810 0.030 0 0 -1.5519</pose>
+          <geometry>
+            <box>
+              <size>55.430 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_159">
+          <pose>288.680 725.295 0.030 0 0 -1.5524</pose>
+          <geometry>
+            <box>
+              <size>19.613 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_160">
+          <pose>264.500 844.495 0.030 0 0 1.6025</pose>
+          <geometry>
+            <box>
+              <size>52.957 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_161">
+          <pose>241.610 796.085 0.030 0 0 -3.0635</pose>
+          <geometry>
+            <box>
+              <size>29.871 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_162">
+          <pose>222.165 794.450 0.030 0 0 -3.0388</pose>
+          <geometry>
+            <box>
+              <size>9.158 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_163">
+          <pose>532.710 805.415 0.030 0 0 3.0918</pose>
+          <geometry>
+            <box>
+              <size>23.529 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_164">
+          <pose>513.625 805.860 0.030 0 0 -3.1225</pose>
+          <geometry>
+            <box>
+              <size>14.673 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_165">
+          <pose>500.770 805.620 0.030 0 0 -3.1235</pose>
+          <geometry>
+            <box>
+              <size>11.042 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_166">
+          <pose>283.695 813.740 0.030 0 0 0.0801</pose>
+          <geometry>
+            <box>
+              <size>22.001 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_167">
+          <pose>481.580 795.525 0.030 0 0 -2.3118</pose>
+          <geometry>
+            <box>
+              <size>12.917 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_168">
+          <pose>471.520 781.785 0.030 0 0 -2.1366</pose>
+          <geometry>
+            <box>
+              <size>21.264 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_169">
+          <pose>454.485 751.530 0.030 0 0 -2.0602</pose>
+          <geometry>
+            <box>
+              <size>48.221 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_170">
+          <pose>436.575 715.715 0.030 0 0 -1.9956</pose>
+          <geometry>
+            <box>
+              <size>31.906 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_171">
+          <pose>428.163 697.293 0.030 0 0 -2.0123</pose>
+          <geometry>
+            <box>
+              <size>8.600 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_172">
+          <pose>538.445 815.015 0.030 0 0 -0.0338</pose>
+          <geometry>
+            <box>
+              <size>31.708 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_173">
+          <pose>256.580 752.310 0.030 0 0 2.1743</pose>
+          <geometry>
+            <box>
+              <size>2.502 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_174">
+          <pose>248.370 762.065 0.030 0 0 2.2808</pose>
+          <geometry>
+            <box>
+              <size>23.011 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_175">
+          <pose>233.420 776.750 0.030 0 0 2.4669</pose>
+          <geometry>
+            <box>
+              <size>19.081 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_176">
+          <pose>223.495 784.325 0.030 0 0 2.5634</pose>
+          <geometry>
+            <box>
+              <size>5.911 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_177">
+          <pose>218.915 786.848 0.030 0 0 2.7346</pose>
+          <geometry>
+            <box>
+              <size>4.585 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_178">
+          <pose>407.360 817.165 0.030 0 0 0.0189</pose>
+          <geometry>
+            <box>
+              <size>42.868 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_179">
+          <pose>463.155 816.870 0.030 0 0 -0.0204</pose>
+          <geometry>
+            <box>
+              <size>68.744 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_180">
+          <pose>306.345 768.278 0.030 0 0 -1.4625</pose>
+          <geometry>
+            <box>
+              <size>51.608 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_181">
+          <pose>264.317 772.490 0.030 0 0 1.5896</pose>
+          <geometry>
+            <box>
+              <size>39.107 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_182">
+          <pose>277.180 530.330 0.030 0 0 1.7810</pose>
+          <geometry>
+            <box>
+              <size>46.299 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_183">
+          <pose>271.655 564.045 0.030 0 0 1.6335</pose>
+          <geometry>
+            <box>
+              <size>22.194 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_184">
+          <pose>269.245 588.390 0.030 0 0 1.6993</pose>
+          <geometry>
+            <box>
+              <size>26.761 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_185">
+          <pose>266.185 647.095 0.030 0 0 1.6004</pose>
+          <geometry>
+            <box>
+              <size>90.910 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_186">
+          <pose>264.560 707.490 0.030 0 0 1.5895</pose>
+          <geometry>
+            <box>
+              <size>29.925 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_187">
+          <pose>264.532 726.115 0.030 0 0 1.5020</pose>
+          <geometry>
+            <box>
+              <size>7.347 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_188">
+          <pose>302.425 695.263 0.030 0 0 -0.9182</pose>
+          <geometry>
+            <box>
+              <size>21.555 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_189">
+          <pose>312.455 683.440 0.030 0 0 -0.7521</pose>
+          <geometry>
+            <box>
+              <size>9.544 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_190">
+          <pose>320.415 676.385 0.030 0 0 -0.7034</pose>
+          <geometry>
+            <box>
+              <size>11.735 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_191">
+          <pose>329.820 670.465 0.030 0 0 -0.4070</pose>
+          <geometry>
+            <box>
+              <size>10.737 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_192">
+          <pose>339.670 666.770 0.030 0 0 -0.3089</pose>
+          <geometry>
+            <box>
+              <size>10.329 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_193">
+          <pose>352.890 665.910 0.030 0 0 0.0853</pose>
+          <geometry>
+            <box>
+              <size>16.661 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_194">
+          <pose>368.495 668.420 0.030 0 0 0.2416</pose>
+          <geometry>
+            <box>
+              <size>15.047 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_195">
+          <pose>381.115 673.645 0.030 0 0 0.5724</pose>
+          <geometry>
+            <box>
+              <size>12.646 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_196">
+          <pose>392.695 682.180 0.030 0 0 0.6842</pose>
+          <geometry>
+            <box>
+              <size>16.169 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_197">
+          <pose>402.310 691.230 0.030 0 0 0.8662</pose>
+          <geometry>
+            <box>
+              <size>10.343 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_198">
+          <pose>409.455 701.340 0.030 0 0 1.0194</pose>
+          <geometry>
+            <box>
+              <size>14.487 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_199">
+          <pose>415.100 713.090 0.030 0 0 1.2507</pose>
+          <geometry>
+            <box>
+              <size>11.757 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_200">
+          <pose>417.430 719.235 0.030 0 0 0.8666</pose>
+          <geometry>
+            <box>
+              <size>1.483 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_201">
+          <pose>419.750 725.930 0.030 0 0 1.2792</pose>
+          <geometry>
+            <box>
+              <size>12.800 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_202">
+          <pose>421.955 738.720 0.030 0 0 1.5160</pose>
+          <geometry>
+            <box>
+              <size>13.340 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_203">
+          <pose>421.735 750.360 0.030 0 0 1.6877</pose>
+          <geometry>
+            <box>
+              <size>10.028 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_204">
+          <pose>418.615 760.280 0.030 0 0 2.0449</pose>
+          <geometry>
+            <box>
+              <size>11.105 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_205">
+          <pose>412.570 769.590 0.030 0 0 2.2475</pose>
+          <geometry>
+            <box>
+              <size>11.210 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_206">
+          <pose>405.590 776.665 0.030 0 0 2.4795</pose>
+          <geometry>
+            <box>
+              <size>8.800 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_207">
+          <pose>396.665 783.150 0.030 0 0 2.5356</pose>
+          <geometry>
+            <box>
+              <size>13.273 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_208">
+          <pose>380.790 792.963 0.030 0 0 2.6168</pose>
+          <geometry>
+            <box>
+              <size>24.080 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_209">
+          <pose>518.705 717.815 0.030 0 0 -3.0100</pose>
+          <geometry>
+            <box>
+              <size>9.835 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_210">
+          <pose>499.690 714.685 0.030 0 0 -2.9676</pose>
+          <geometry>
+            <box>
+              <size>28.713 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_211">
+          <pose>468.550 705.780 0.030 0 0 -2.7805</pose>
+          <geometry>
+            <box>
+              <size>36.344 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_212">
+          <pose>441.477 693.965 0.030 0 0 -2.6499</pose>
+          <geometry>
+            <box>
+              <size>22.853 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_213">
+          <pose>262.640 913.640 0.030 0 0 1.5897</pose>
+          <geometry>
+            <box>
+              <size>47.728 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_214">
+          <pose>261.240 1013.985 0.030 0 0 1.5832</pose>
+          <geometry>
+            <box>
+              <size>152.982 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_215">
+          <pose>260.482 1091.550 0.030 0 0 1.3944</pose>
+          <geometry>
+            <box>
+              <size>2.194 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_216">
+          <pose>290.300 668.975 0.030 0 0 -1.5391</pose>
+          <geometry>
+            <box>
+              <size>65.023 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_217">
+          <pose>291.600 622.070 0.030 0 0 -1.5521</pose>
+          <geometry>
+            <box>
+              <size>28.825 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_218">
+          <pose>294.960 573.350 0.030 0 0 -1.4810</pose>
+          <geometry>
+            <box>
+              <size>68.898 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_219">
+          <pose>298.550 538.495 0.030 0 0 -0.8284</pose>
+          <geometry>
+            <box>
+              <size>1.479 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_220">
+          <pose>303.325 518.630 0.030 0 0 -1.3530</pose>
+          <geometry>
+            <box>
+              <size>39.575 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_221">
+          <pose>563.060 802.725 0.030 0 0 2.9736</pose>
+          <geometry>
+            <box>
+              <size>15.965 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_222">
+          <pose>541.890 799.840 0.030 0 0 -2.7616</pose>
+          <geometry>
+            <box>
+              <size>6.848 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_223">
+          <pose>536.285 797.415 0.030 0 0 -2.6971</pose>
+          <geometry>
+            <box>
+              <size>5.372 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_224">
+          <pose>532.415 795.125 0.030 0 0 -2.4758</pose>
+          <geometry>
+            <box>
+              <size>3.675 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_225">
+          <pose>530.490 793.425 0.030 0 0 -2.2750</pose>
+          <geometry>
+            <box>
+              <size>1.483 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_226">
+          <pose>529.540 791.745 0.030 0 0 -1.9697</pose>
+          <geometry>
+            <box>
+              <size>2.420 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_227">
+          <pose>528.125 788.950 0.030 0 0 -2.0832</pose>
+          <geometry>
+            <box>
+              <size>3.855 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_228">
+          <pose>527.210 785.605 0.030 0 0 -1.5528</pose>
+          <geometry>
+            <box>
+              <size>3.331 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_229">
+          <pose>527.305 780.615 0.030 0 0 -1.5512</pose>
+          <geometry>
+            <box>
+              <size>6.651 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_230">
+          <pose>527.420 774.520 0.030 0 0 -1.5527</pose>
+          <geometry>
+            <box>
+              <size>5.541 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_231">
+          <pose>528.010 768.990 0.030 0 0 -1.3776</pose>
+          <geometry>
+            <box>
+              <size>5.625 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_232">
+          <pose>529.570 764.030 0.030 0 0 -1.1367</pose>
+          <geometry>
+            <box>
+              <size>4.850 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_233">
+          <pose>531.120 759.620 0.030 0 0 -1.3354</pose>
+          <geometry>
+            <box>
+              <size>4.545 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_234">
+          <pose>532.650 756.325 0.030 0 0 -0.8261</pose>
+          <geometry>
+            <box>
+              <size>2.951 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_235">
+          <pose>535.150 753.605 0.030 0 0 -0.8284</pose>
+          <geometry>
+            <box>
+              <size>4.438 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_236">
+          <pose>538.145 750.335 0.030 0 0 -0.8301</pose>
+          <geometry>
+            <box>
+              <size>4.431 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_237">
+          <pose>541.620 747.625 0.030 0 0 -0.4974</pose>
+          <geometry>
+            <box>
+              <size>4.506 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_238">
+          <pose>545.575 745.480 0.030 0 0 -0.4965</pose>
+          <geometry>
+            <box>
+              <size>4.492 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_239">
+          <pose>550.015 743.350 0.030 0 0 -0.4061</pose>
+          <geometry>
+            <box>
+              <size>5.366 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_240">
+          <pose>555.435 741.235 0.030 0 0 -0.3429</pose>
+          <geometry>
+            <box>
+              <size>6.275 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_241">
+          <pose>68.325 790.835 0.030 0 0 0.1156</pose>
+          <geometry>
+            <box>
+              <size>137.568 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_242">
+          <pose>147.885 799.535 0.030 0 0 0.0680</pose>
+          <geometry>
+            <box>
+              <size>22.522 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_243">
+          <pose>169.655 801.295 0.030 0 0 0.0942</pose>
+          <geometry>
+            <box>
+              <size>21.164 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_244">
+          <pose>311.955 1048.195 0.030 0 0 -1.5519</pose>
+          <geometry>
+            <box>
+              <size>110.850 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_245">
+          <pose>315.140 982.845 0.030 0 0 -1.3586</pose>
+          <geometry>
+            <box>
+              <size>20.326 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_246">
+          <pose>320.350 965.760 0.030 0 0 -1.1652</pose>
+          <geometry>
+            <box>
+              <size>15.562 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_247">
+          <pose>328.860 955.385 0.030 0 0 -0.5351</pose>
+          <geometry>
+            <box>
+              <size>12.648 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_248">
+          <pose>343.100 952.325 0.030 0 0 0.0187</pose>
+          <geometry>
+            <box>
+              <size>17.603 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_249">
+          <pose>353.370 952.520 0.030 0 0 0.0204</pose>
+          <geometry>
+            <box>
+              <size>2.941 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_250">
+          <pose>368.540 952.250 0.030 0 0 -0.0219</pose>
+          <geometry>
+            <box>
+              <size>27.407 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_251">
+          <pose>392.590 947.710 0.030 0 0 -0.3888</pose>
+          <geometry>
+            <box>
+              <size>22.370 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_252">
+          <pose>411.845 938.095 0.030 0 0 -0.5431</pose>
+          <geometry>
+            <box>
+              <size>20.803 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_253">
+          <pose>427.220 926.745 0.030 0 0 -0.7456</pose>
+          <geometry>
+            <box>
+              <size>17.614 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_254">
+          <pose>439.195 914.220 0.030 0 0 -0.8719</pose>
+          <geometry>
+            <box>
+              <size>17.112 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_255">
+          <pose>445.720 905.475 0.030 0 0 -1.1358</pose>
+          <geometry>
+            <box>
+              <size>4.841 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_256">
+          <pose>450.320 895.030 0.030 0 0 -1.1614</pose>
+          <geometry>
+            <box>
+              <size>17.987 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_257">
+          <pose>459.515 874.135 0.030 0 0 -1.1529</pose>
+          <geometry>
+            <box>
+              <size>27.671 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_258">
+          <pose>470.175 853.270 0.030 0 0 -1.0203</pose>
+          <geometry>
+            <box>
+              <size>19.289 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_259">
+          <pose>481.225 837.955 0.030 0 0 -0.8684</pose>
+          <geometry>
+            <box>
+              <size>18.590 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_260">
+          <pose>493.148 826.562 0.030 0 0 -0.6281</pose>
+          <geometry>
+            <box>
+              <size>14.627 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_261">
+          <pose>179.755 790.400 0.030 0 0 -3.0541</pose>
+          <geometry>
+            <box>
+              <size>23.339 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_262">
+          <pose>156.405 788.605 0.030 0 0 -3.0756</pose>
+          <geometry>
+            <box>
+              <size>23.501 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_263">
+          <pose>140.290 787.195 0.030 0 0 -2.9979</pose>
+          <geometry>
+            <box>
+              <size>8.871 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_264">
+          <pose>113.930 784.485 0.030 0 0 -3.0474</pose>
+          <geometry>
+            <box>
+              <size>44.136 3.200 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_265">
+          <pose>293.710 509.580 0.030 0 0 1.7943</pose>
+          <geometry>
+            <box>
+              <size>57.737 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_266">
+          <pose>283.680 574.805 0.030 0 0 1.6684</pose>
+          <geometry>
+            <box>
+              <size>74.505 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_267">
+          <pose>279.800 625.180 0.030 0 0 1.5896</pose>
+          <geometry>
+            <box>
+              <size>26.605 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_268">
+          <pose>278.320 677.815 0.030 0 0 1.6021</pose>
+          <geometry>
+            <box>
+              <size>78.708 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_269">
+          <pose>277.405 726.580 0.030 0 0 1.5374</pose>
+          <geometry>
+            <box>
+              <size>18.871 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_270">
+          <pose>277.710 736.565 0.030 0 0 1.5888</pose>
+          <geometry>
+            <box>
+              <size>1.110 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_271">
+          <pose>276.730 762.600 0.030 0 0 1.6088</pose>
+          <geometry>
+            <box>
+              <size>50.997 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_272">
+          <pose>275.345 810.245 0.030 0 0 1.5895</pose>
+          <geometry>
+            <box>
+              <size>44.338 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_273">
+          <pose>274.145 873.975 0.030 0 0 1.5897</pose>
+          <geometry>
+            <box>
+              <size>83.145 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_274">
+          <pose>270.725 1004.045 0.030 0 0 1.6006</pose>
+          <geometry>
+            <box>
+              <size>177.088 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_275">
+          <pose>277.845 1093.352 0.030 0 0 -1.5558</pose>
+          <geometry>
+            <box>
+              <size>0.665 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_276">
+          <pose>280.670 992.217 0.030 0 0 -1.5428</pose>
+          <geometry>
+            <box>
+              <size>201.684 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_277">
+          <pose>391.235 826.020 0.030 0 0 0.4250</pose>
+          <geometry>
+            <box>
+              <size>15.378 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_278">
+          <pose>402.130 830.370 0.030 0 0 0.2945</pose>
+          <geometry>
+            <box>
+              <size>8.130 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_279">
+          <pose>410.850 834.970 0.030 0 0 0.6161</pose>
+          <geometry>
+            <box>
+              <size>11.836 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_280">
+          <pose>416.635 839.515 0.030 0 0 0.8669</pose>
+          <geometry>
+            <box>
+              <size>2.951 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_281">
+          <pose>421.430 844.595 0.030 0 0 0.8002</pose>
+          <geometry>
+            <box>
+              <size>11.025 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_282">
+          <pose>427.640 852.475 0.030 0 0 1.0276</pose>
+          <geometry>
+            <box>
+              <size>9.170 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_283">
+          <pose>431.875 861.420 0.030 0 0 1.2151</pose>
+          <geometry>
+            <box>
+              <size>10.710 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_284">
+          <pose>433.615 873.090 0.030 0 0 1.5896</pose>
+          <geometry>
+            <box>
+              <size>13.302 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_285">
+          <pose>433.395 884.730 0.030 0 0 1.5898</pose>
+          <geometry>
+            <box>
+              <size>9.982 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_286">
+          <pose>431.740 894.680 0.030 0 0 1.8755</pose>
+          <geometry>
+            <box>
+              <size>10.399 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_287">
+          <pose>427.640 904.580 0.030 0 0 2.0457</pose>
+          <geometry>
+            <box>
+              <size>11.109 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_288">
+          <pose>423.060 913.915 0.030 0 0 2.0054</pose>
+          <geometry>
+            <box>
+              <size>9.691 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_289">
+          <pose>418.525 921.035 0.030 0 0 2.3122</pose>
+          <geometry>
+            <box>
+              <size>7.389 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_290">
+          <pose>405.160 929.655 0.030 0 0 2.6447</pose>
+          <geometry>
+            <box>
+              <size>24.731 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_291">
+          <pose>388.880 937.110 0.030 0 0 2.8609</pose>
+          <geometry>
+            <box>
+              <size>11.261 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_292">
+          <pose>377.570 940.225 0.030 0 0 2.8839</pose>
+          <geometry>
+            <box>
+              <size>12.203 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_293">
+          <pose>364.815 942.205 0.030 0 0 3.0797</pose>
+          <geometry>
+            <box>
+              <size>13.736 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_294">
+          <pose>352.105 941.965 0.030 0 0 -3.0285</pose>
+          <geometry>
+            <box>
+              <size>11.785 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_295">
+          <pose>341.860 940.665 0.030 0 0 -2.9979</pose>
+          <geometry>
+            <box>
+              <size>8.871 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_296">
+          <pose>334.065 938.855 0.030 0 0 -2.8093</pose>
+          <geometry>
+            <box>
+              <size>7.204 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_297">
+          <pose>325.815 935.370 0.030 0 0 -2.6967</pose>
+          <geometry>
+            <box>
+              <size>10.735 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_298">
+          <pose>318.085 930.235 0.030 0 0 -2.3667</pose>
+          <geometry>
+            <box>
+              <size>8.076 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_299">
+          <pose>312.810 924.595 0.030 0 0 -2.2747</pose>
+          <geometry>
+            <box>
+              <size>7.385 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_300">
+          <pose>307.090 916.725 0.030 0 0 -2.1533</pose>
+          <geometry>
+            <box>
+              <size>12.107 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+        <visual name="seg_301">
+          <pose>297.000 900.640 0.030 0 0 -2.1206</pose>
+          <geometry>
+            <box>
+              <size>25.873 6.400 0.040</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.12 0.12 0.14 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tls_cluster_2_72_0">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <pose>273.820 798.280 3.000 0 0 0.0000</pose>
+          <geometry>
+            <box>
+              <size>0.400 0.400 0.400</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.15 0.15 1</ambient>
+            <diffuse>0.9 0.15 0.15 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <include>
+        <name>pole</name>
+        <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Lamp Post</uri>
+        <pose>273.420 798.280 0 0 0 0</pose>
+        <static>true</static>
+      </include>
+    </model>
+    <model name="tls_cluster_2_72_1">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <pose>255.250 811.000 3.000 0 0 0.0000</pose>
+          <geometry>
+            <box>
+              <size>0.400 0.400 0.400</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.15 0.15 1</ambient>
+            <diffuse>0.9 0.15 0.15 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <include>
+        <name>pole</name>
+        <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Lamp Post</uri>
+        <pose>254.850 811.000 0 0 0 0</pose>
+        <static>true</static>
+      </include>
+    </model>
+    <model name="tls_cluster_2_72_2">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <pose>265.950 792.070 3.000 0 0 0.0000</pose>
+          <geometry>
+            <box>
+              <size>0.400 0.400 0.400</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.15 0.15 1</ambient>
+            <diffuse>0.9 0.15 0.15 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <include>
+        <name>pole</name>
+        <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Lamp Post</uri>
+        <pose>265.550 792.070 0 0 0 0</pose>
+        <static>true</static>
+      </include>
+    </model>
+    <model name="tls_13_0">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <pose>310.590 593.400 3.000 0 0 0.0000</pose>
+          <geometry>
+            <box>
+              <size>0.400 0.400 0.400</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.15 0.15 1</ambient>
+            <diffuse>0.9 0.15 0.15 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <include>
+        <name>pole</name>
+        <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Lamp Post</uri>
+        <pose>310.190 593.400 0 0 0 0</pose>
+        <static>true</static>
+      </include>
+    </model>
+    <model name="tls_13_1">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <pose>317.520 592.550 3.000 0 0 0.0000</pose>
+          <geometry>
+            <box>
+              <size>0.400 0.400 0.400</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.15 0.15 1</ambient>
+            <diffuse>0.9 0.15 0.15 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <include>
+        <name>pole</name>
+        <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Lamp Post</uri>
+        <pose>317.120 592.550 0 0 0 0</pose>
+        <static>true</static>
+      </include>
+    </model>
+    <gui fullscreen="0">
+      <plugin filename="MinimalScene" name="3D View">
+        <gz-gui>
+          <title>3D View</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="string" key="state">docked</property>
+        </gz-gui>
+        <engine>ogre2</engine>
+        <scene>scene</scene>
+        <ambient_light>0.4 0.4 0.4</ambient_light>
+        <background_color>0.8 0.8 0.8</background_color>
+        <camera_pose>249.68 790.06 24.90 0 0.5 0.7854</camera_pose>
+      </plugin>
+      <plugin filename="EntityContextMenuPlugin" name="Entity context menu">
+        <gz-gui>
+          <property key="state" type="string">floating</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="GzSceneManager" name="Scene Manager">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="InteractiveViewControl" name="Interactive view control">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="CameraTracking" name="Camera Tracking">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="MarkerManager" name="Marker manager">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="SelectEntities" name="Select Entities">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="Spawn" name="Spawn Entities">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="VisualizationCapabilities" name="Visualization Capabilities">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="WorldControl" name="World control">
+        <gz-gui>
+          <title>World control</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="bool" key="resizable">false</property>
+          <property type="double" key="height">72</property>
+          <property type="double" key="z">1</property>
+          <property type="string" key="state">floating</property>
+          <anchors target="3D View">
+            <line own="left" target="left" />
+            <line own="bottom" target="bottom" />
+          </anchors>
+        </gz-gui>
+        <play_pause>true</play_pause>
+        <step>true</step>
+        <start_paused>true</start_paused>
+        <use_event>true</use_event>
+      </plugin>
+      <plugin filename="WorldStats" name="World stats">
+        <gz-gui>
+          <title>World stats</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="bool" key="resizable">false</property>
+          <property type="double" key="height">110</property>
+          <property type="double" key="width">290</property>
+          <property type="double" key="z">1</property>
+          <property type="string" key="state">floating</property>
+          <anchors target="3D View">
+            <line own="right" target="right" />
+            <line own="bottom" target="bottom" />
+          </anchors>
+        </gz-gui>
+        <sim_time>true</sim_time>
+        <real_time>true</real_time>
+        <real_time_factor>true</real_time_factor>
+        <iterations>true</iterations>
+      </plugin>
+      <plugin filename="Shapes" name="Shapes">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="x" type="double">0</property>
+          <property key="y" type="double">0</property>
+          <property key="width" type="double">300</property>
+          <property key="height" type="double">50</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+          <property key="cardBackground" type="string">#666666</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="Lights" name="Lights">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="x" type="double">300</property>
+          <property key="y" type="double">0</property>
+          <property key="width" type="double">150</property>
+          <property key="height" type="double">50</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+          <property key="cardBackground" type="string">#666666</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="TransformControl" name="Transform control">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="x" type="double">0</property>
+          <property key="y" type="double">50</property>
+          <property key="width" type="double">250</property>
+          <property key="height" type="double">50</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+          <property key="cardBackground" type="string">#777777</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="Screenshot" name="Screenshot">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="x" type="double">250</property>
+          <property key="y" type="double">50</property>
+          <property key="width" type="double">50</property>
+          <property key="height" type="double">50</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+          <property key="cardBackground" type="string">#777777</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="CopyPaste" name="CopyPaste">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="x" type="double">300</property>
+          <property key="y" type="double">50</property>
+          <property key="width" type="double">100</property>
+          <property key="height" type="double">50</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+          <property key="cardBackground" type="string">#777777</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="ComponentInspector" name="Component inspector">
+        <gz-gui>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="string" key="state">docked</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="EntityTree" name="Entity tree">
+        <gz-gui>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="string" key="state">docked</property>
+        </gz-gui>
+      </plugin>
+    </gui>
+  </world>
+</sdf>

@@ -1,0 +1,40 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# --- Node / Vite ---
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# --- Secrets and local config ---
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# --- SUMO artefacts ---
+# Route alternatives and trip files are duarouter's intermediate output. The
+# scenarios read only the final .rou.xml, and these regenerate from
+# simulation/scripts/build_*.py, so they stay out of the repo.
+simulation/sumo/routes/*.rou.alt.xml
+simulation/sumo/routes/*.trips.xml
+simulation/sumo/routes/*.calibrated_trips.xml
+simulation/sumo/video/
+*.summary.xml
+*.tripinfo.xml
+
+# --- Editors / OS ---
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.sw?
+
+# --- Agent scratch ---
+.claude/
+.cora/

@@ -1,0 +1,31 @@
+services:
+  # Dashboard (Vite build served by `vite preview`).
+  # VITE_* vars are baked in at BUILD time, so changing PRAVAH_API needs a rebuild.
+  - type: web
+    name: pravah-dashboard
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run preview
+    envVars:
+      - key: VITE_MAPBOX_TOKEN
+        sync: false
+      - key: VITE_PRAVAH_API
+        value: https://pravah-middleware.onrender.com
+      - key: NODE_VERSION
+        value: 20.11.0
+
+  # Interconnect. Feeds PUSH to https://<this-host>/api/ingest — a cloud service
+  # cannot poll SUMO boxes sitting on a private LAN.
+  - type: web
+    name: pravah-middleware
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: python backend/pravah_middleware.py serve
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: PRAVAH_CORS
+        value: https://pravah-dashboard.onrender.com

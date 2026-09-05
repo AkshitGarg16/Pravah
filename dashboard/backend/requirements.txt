@@ -1,0 +1,7 @@
+# Middleware only — this is what gets deployed.
+# The training scripts (torch, scikit-learn, numpy) run locally and are
+# deliberately not listed here: torch alone would blow past a free-tier build.
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+httpx==0.28.1
+websockets==14.1

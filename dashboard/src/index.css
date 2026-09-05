@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background-color: #f8fafb;
+    color: #16222e;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  /* Thin custom scrollbar for internally-scrolling panels */
+  .thin-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 transparent;
+  }
+  .thin-scroll::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .thin-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .thin-scroll::-webkit-scrollbar-thumb {
+    background-color: #cbd5e0;
+    border-radius: 9999px;
+  }
+}
+
+/* Pulsing status dot: fade opacity 1 -> 0.4 over 2s */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Gentle background pulse for the EV priority pill (coral/5 -> coral/15 over 1.5s) */
+@keyframes ev-pulse {
+  0%,
+  100% {
+    background-color: rgba(228, 103, 79, 0.05);
+  }
+  50% {
+    background-color: rgba(228, 103, 79, 0.15);
+  }
+}
+.animate-ev-pulse {
+  animation: ev-pulse 1.5s ease-in-out infinite;
+}
+
+/* Pulsing EV marker dot */
+@keyframes ev-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+.animate-ev-dot {
+  animation: ev-dot 1.5s ease-in-out infinite;
+}
+
+/* Expanding ring on suggested infrastructure sites (Infra Development Mode) */
+@keyframes site-ping {
+  0% {
+    transform: scale(0.45);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+.animate-site-ping {
+  animation: site-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Slow spin for the scan / refresh icons */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 1.4s linear infinite;
+}
+
+/* Mapbox popup restyle to match the design system */
+.mapboxgl-popup-content {
+  padding: 8px 10px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(11, 31, 58, 0.14);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.mapboxgl-popup-close-button {
+  display: none;
+}

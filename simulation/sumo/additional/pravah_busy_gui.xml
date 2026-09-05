@@ -1,0 +1,39 @@
+<viewsettings>
+    <!-- Opens sumo-gui already framed on the ITO cluster and coloured the way
+         the scenario is meant to be read: vehicles by their current speed, so
+         "busy but free-flowing" is visible at a glance (a screen full of fast
+         colours, not a screen full of stopped ones) rather than something you
+         have to take on trust from the metrics. -->
+    <scheme name="pravah-busy">
+        <opengl dither="0" fps="0" drawBoundaries="0"/>
+        <background backgroundColor="24,26,30" showGrid="0" showRails="1"/>
+        <edges laneEdgeMode="1" scaleMode="0" laneShowBorders="1" showLinkDecals="1"
+               showRails="1" hideConnectors="0" widthExaggeration="1.2">
+            <colorScheme name="by allowed speed">
+                <entry color="90,90,96" name="0"/>
+            </colorScheme>
+        </edges>
+        <vehicles vehicleMode="9" vehicleQuality="2" vehicle_minSize="1"
+                  vehicleExaggeration="1.4" showBlinker="1" drawMinGap="0"
+                  showBTRange="0" showRouteIndex="0" scaleLength="1">
+            <!-- vehicleMode 9 = colour by speed: red stopped -> green at the
+                 lane's own limit. -->
+            <colorScheme name="by speed" interpolated="1">
+                <entry color="220,40,40" threshold="0"/>
+                <entry color="235,170,40" threshold="4"/>
+                <entry color="240,235,90" threshold="8"/>
+                <entry color="90,220,110" threshold="14"/>
+            </colorScheme>
+        </vehicles>
+        <junctions junctionMode="0" drawShape="1" drawCrossingsAndWalkingareas="1"
+                   trafficLightMode="0" tlsPhaseIndex="0"/>
+        <additionals addMode="0" addExaggeration="1"/>
+        <pois poiExaggeration="1"/>
+        <legend showSizeLegend="1" showColorLegend="0"/>
+    </scheme>
+    <!-- Centred on the ITO cluster (junction cluster_2_72) rather than the
+         whole 3.4 km network bounding box, which would render the vehicles
+         too small to see. -->
+    <viewport zoom="700" x="400" y="900"/>
+    <delay value="60"/>
+</viewsettings>

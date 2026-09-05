@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<additional>
+  <tlLogic id="13" type="static" programID="unoptimized" offset="0">
+    <phase duration="22" state="GGrr" />
+    <phase duration="4" state="yyrr" />
+    <phase duration="120" state="rrGG" />
+    <phase duration="4" state="rryy" />
+  </tlLogic>
+  <tlLogic id="309" type="static" programID="unoptimized" offset="75">
+    <phase duration="15" state="GGrr" />
+    <phase duration="4" state="yyrr" />
+    <phase duration="127" state="rrGG" />
+    <phase duration="4" state="rryy" />
+  </tlLogic>
+  <tlLogic id="57" type="static" programID="unoptimized" offset="0">
+    <phase duration="127" state="GGrr" />
+    <phase duration="4" state="yyrr" />
+    <phase duration="15" state="rrGG" />
+    <phase duration="4" state="rryy" />
+  </tlLogic>
+  <tlLogic id="cluster_2_72" type="static" programID="unoptimized" offset="75">
+    <phase duration="33" state="gGgrrrrGg" />
+    <phase duration="4" state="yyyrrrryy" />
+    <phase duration="109" state="rrrGGGGrr" />
+    <phase duration="4" state="rrryyyyrr" />
+  </tlLogic>
+</additional>

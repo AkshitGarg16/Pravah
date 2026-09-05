@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<additional>
+  <tlLogic id="13" type="actuated" programID="busy" offset="0">
+    <param key="max-gap" value="3.0" />
+    <param key="detector-gap" value="2.0" />
+    <param key="show-detectors" value="false" />
+    <phase duration="25" minDur="6" maxDur="25" state="GGrr" />
+    <phase duration="4" state="yyrr" />
+    <phase duration="25" minDur="6" maxDur="25" state="rrGG" />
+    <phase duration="4" state="rryy" />
+  </tlLogic>
+  <tlLogic id="309" type="actuated" programID="busy" offset="0">
+    <param key="max-gap" value="3.0" />
+    <param key="detector-gap" value="2.0" />
+    <param key="show-detectors" value="false" />
+    <phase duration="25" minDur="6" maxDur="25" state="GGrr" />
+    <phase duration="4" state="yyrr" />
+    <phase duration="25" minDur="6" maxDur="25" state="rrGG" />
+    <phase duration="4" state="rryy" />
+  </tlLogic>
+  <tlLogic id="57" type="actuated" programID="busy" offset="0">
+    <param key="max-gap" value="3.0" />
+    <param key="detector-gap" value="2.0" />
+    <param key="show-detectors" value="false" />
+    <phase duration="25" minDur="6" maxDur="25" state="GGrr" />
+    <phase duration="4" state="yyrr" />
+    <phase duration="25" minDur="6" maxDur="25" state="rrGG" />
+    <phase duration="4" state="rryy" />
+  </tlLogic>
+  <tlLogic id="cluster_2_72" type="actuated" programID="busy" offset="0">
+    <param key="max-gap" value="3.0" />
+    <param key="detector-gap" value="2.0" />
+    <param key="show-detectors" value="false" />
+    <phase duration="25" minDur="6" maxDur="25" state="gGgrrrrGg" />
+    <phase duration="4" state="yyyrrrryy" />
+    <phase duration="25" minDur="6" maxDur="25" state="rrrGGGGrr" />
+    <phase duration="4" state="rrryyyyrr" />
+  </tlLogic>
+</additional>

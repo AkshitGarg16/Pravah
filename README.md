@@ -105,6 +105,7 @@ and the header stats advancing.
 | `--scenario pravah\|current` | which signal program to run (default `pravah`) |
 | `--sumo-gui` | open SUMO's own window alongside the dashboard |
 | `--fast` | run as fast as the machine allows — an hour of traffic in ~2 minutes |
+| `--lan` | make the dashboard usable from other devices on your network |
 | `--no-dev` | don't start the Vite dev server (you already have one) |
 | `--rate` | telemetry snapshots per second (default 1.0) |
 | `--port` / `--feed-port` | move the API off 8000 or the feed off 5555 |
@@ -130,6 +131,26 @@ So: ~10 minutes of wall clock before the difference shows, ~30 before the jam is
 obvious. Use `--fast` to reach gridlock in about two minutes, then restart in real
 time to watch it. Under `current`, junction `cluster_2_72` is the first to fail —
 it goes red with a **SPILLBACK** badge and a climbing wait time.
+
+### Viewing it from another device
+
+Opening the Network URL that Vite prints is **not enough on its own** — the page
+loads, the map draws from the bundled network file, and the feed reads offline.
+Two things are wrong: the browser resolves `VITE_PRAVAH_API`, which defaults to
+`http://localhost:8000` — the *other* device's localhost, where nothing is
+listening — and the middleware's CORS list doesn't include that device's origin.
+
+`--lan` fixes both. It writes this machine's address into `dashboard/.env` before
+Vite starts, adds the matching origin to the CORS list, and prints the URL to open:
+
+```bash
+simulation/gui_data/run_pipeline.sh --lan
+```
+
+Everything still runs on this one machine; the other device is only a browser. To
+actually split the work across two computers, see the next section. `--lan` rewrites
+`VITE_PRAVAH_API` on every run, so it follows you onto a new network — but a
+dashboard left open across a network change needs a reload.
 
 ## Running it by hand
 

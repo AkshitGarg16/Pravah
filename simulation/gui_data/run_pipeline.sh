@@ -9,6 +9,7 @@
 #   gui_data/run_pipeline.sh --scenario current # the jammed one
 #   gui_data/run_pipeline.sh --no-dev           # leave the dev server alone
 #   gui_data/run_pipeline.sh --sumo-gui         # open sumo-gui alongside
+#   gui_data/run_pipeline.sh --lan              # reachable from other devices
 #
 # Ctrl-C stops every process it started, including any it inherited on those
 # ports from an earlier run.
@@ -24,6 +25,8 @@ FEED_PORT=5555
 START_DEV=1
 REALTIME="--realtime"
 SUMO_GUI=
+LAN=0
+CORS=
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -40,7 +43,14 @@ while [[ $# -gt 0 ]]; do
     # which is an hour of traffic in about two minutes -- useful for reaching a
     # jam quickly, useless for watching one.
     --fast) REALTIME=""; shift ;;
-    -h|--help) sed -n '2,20p' "${BASH_SOURCE[0]}" | sed 's/^# \?//'; exit 0 ;;
+    # Opening the dev server's Network URL on another device is not enough on
+    # its own: the browser resolves VITE_PRAVAH_API, which defaults to
+    # localhost:8000 -- the *other* device's localhost, where nothing is
+    # listening. This points it at this machine and lets that origin through
+    # the middleware's CORS list.
+    --lan) LAN=1; shift ;;
+    --cors) CORS="$2"; shift 2 ;;
+    -h|--help) sed -n '2,15p' "${BASH_SOURCE[0]}" | sed 's/^# \?//'; exit 0 ;;
     *) echo "unknown option: $1" >&2; exit 1 ;;
   esac
 done
@@ -103,13 +113,41 @@ if [[ ! -f "$NETWORK_JSON" || "$NET_XML" -nt "$NETWORK_JSON" ]]; then
   "$REPO/gui_data/export_network.py" --gui-repo "$GUI_REPO" || exit 1
 fi
 
+if [[ "$LAN" == "1" ]]; then
+  LAN_IP=$(ip route get 1.1.1.1 2>/dev/null |
+           awk '{for (i = 1; i <= NF; i++) if ($i == "src") { print $(i + 1); exit }}')
+  [[ -n "${LAN_IP:-}" ]] || { echo "--lan: could not determine this machine's IP" >&2; exit 1; }
+  : "${CORS:=http://localhost:5173,http://127.0.0.1:5173,http://$LAN_IP:5173}"
+
+  # Vite reads .env once at startup and inlines the value, so this has to be
+  # written before the dev server launches, not after.
+  ENV_FILE="$GUI_REPO/.env"
+  python3 - "$ENV_FILE" "http://$LAN_IP:$API_PORT" <<'PYEOF'
+import pathlib, sys
+path, api = pathlib.Path(sys.argv[1]), sys.argv[2]
+lines = path.read_text().splitlines() if path.exists() else []
+out, seen = [], False
+for line in lines:
+    if line.startswith("VITE_PRAVAH_API="):
+        out.append(f"VITE_PRAVAH_API={api}")
+        seen = True
+    else:
+        out.append(line)
+if not seen:
+    out.append(f"VITE_PRAVAH_API={api}")
+path.write_text("\n".join(out) + "\n")
+print(f"  VITE_PRAVAH_API={api}  ->  {path}")
+PYEOF
+fi
+: "${CORS:=http://localhost:5173,http://127.0.0.1:5173}"
+
 echo "scenario: $SCENARIO  ($SUMOCFG)"
 free_port "$API_PORT"
 free_port "$FEED_PORT"
 
 echo "[1/3] middleware on :$API_PORT"
 python3 "$GUI_REPO/backend/pravah_middleware.py" serve --port "$API_PORT" \
-  --cors "http://localhost:5173,http://127.0.0.1:5173" &
+  --cors "$CORS" &
 PIDS+=($!)
 
 # The middleware has to be listening before the bridge starts posting, and the
@@ -136,6 +174,7 @@ if [[ "$START_DEV" == "1" ]]; then
   sleep 3
   echo
   echo "  dashboard   http://localhost:5173"
+  [[ "$LAN" == "1" ]] && echo "  from a phone/laptop on the same network:  http://$LAN_IP:5173"
 else
   echo
   echo "  dashboard   run 'npm run dev' in $GUI_REPO"

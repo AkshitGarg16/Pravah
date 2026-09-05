@@ -1,5 +1,8 @@
+import { useMemo } from 'react'
 import { RefreshCw, Radar } from 'lucide-react'
 import { useDashboardStore } from '../store/useDashboardStore'
+import { useLiveStore } from '../store/useLiveStore'
+import { toInfraSites } from '../utils/infraSites'
 import { regionList } from '../data/regions'
 import type { RegionId } from '../types'
 
@@ -7,13 +10,17 @@ import type { RegionId } from '../types'
 export default function InfraBar() {
   const region = useDashboardStore((s) => s.region)
   const setRegion = useDashboardStore((s) => s.setRegion)
-  const sites = useDashboardStore((s) => s.sites)
+  const network = useLiveStore((s) => s.network)
+  const liveSegments = useLiveStore((s) => s.segments)
+  const sites = useMemo(() => toInfraSites(network, liveSegments), [network, liveSegments])
   const searchQuery = useDashboardStore((s) => s.searchQuery)
   const setSearchQuery = useDashboardStore((s) => s.setSearchQuery)
   const scanning = useDashboardStore((s) => s.scanning)
   const rescanSites = useDashboardStore((s) => s.rescanSites)
 
-  const totalDelay = sites.reduce((acc, s) => acc + s.delaySaving, 0)
+  // The worst single site, not a sum: delay deficits are percentages of each
+  // segment's own free-flow time, so adding them across roads means nothing.
+  const worstDeficit = sites.reduce((acc, s) => Math.max(acc, s.delaySaving), 0)
 
   return (
     <div
@@ -57,7 +64,7 @@ export default function InfraBar() {
       </button>
 
       <span className="ml-auto bg-purple text-white text-xs font-medium px-3 py-0.5 rounded-full">
-        {sites.length} candidate sites · −{totalDelay}% combined delay
+        {sites.length} candidate sites · worst {worstDeficit}% below limit
       </span>
     </div>
   )

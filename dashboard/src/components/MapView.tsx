@@ -24,6 +24,7 @@ import type {
 import { getCongestionColor, getCongestionLabel } from '../utils/congestion'
 import { CONGESTION_COLOR } from '../utils/liveLights'
 import { getSiteColor, kindShort, getPriority, priorityLabel } from '../utils/sites'
+import { toInfraSites } from '../utils/infraSites'
 
 // Only the Mapbox basemap needs this. The default basemap is OpenStreetMap
 // raster tiles, which need no token, so an empty value is a normal state
@@ -118,7 +119,6 @@ export default function MapView() {
   const basemap = useDashboardStore((s) => s.basemap)
   const setBasemap = useDashboardStore((s) => s.setBasemap)
   const infraMode = useDashboardStore((s) => s.infraMode)
-  const sites = useDashboardStore((s) => s.sites)
   const selectedSiteId = useDashboardStore((s) => s.selectedSiteId)
   const selectSite = useDashboardStore((s) => s.selectSite)
 
@@ -202,6 +202,12 @@ export default function MapView() {
     [liveSegments],
   )
 
+  // Candidate sites sit at the midpoint of each road, derived from the same
+  // network and feed the map is already drawing -- see utils/infraSites.
+  const sites = useMemo(
+    () => (infraMode ? toInfraSites(network, liveSegments) : []),
+    [infraMode, network, liveSegments],
+  )
   const selectedSite = sites.find((s) => s.id === selectedSiteId) ?? null
 
   const onHover = (e: MapLayerMouseEvent) => {
@@ -374,7 +380,7 @@ export default function MapView() {
                 anchor="center"
                 onClick={(e) => {
                   e.originalEvent.stopPropagation()
-                  selectSite(site.id)
+                  selectSite(site.id, site.lat, site.lng)
                 }}
               >
                 <div className="relative flex items-center justify-center cursor-pointer">

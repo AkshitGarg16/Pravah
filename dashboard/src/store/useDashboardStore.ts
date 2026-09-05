@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { RegionId, SuggestedSite } from '../types'
+import type { RegionId } from '../types'
 import { regions } from '../data/regions'
 
 export interface ViewState {
@@ -33,7 +33,6 @@ const DEFAULT_REGION: RegionId = 'ito'
  */
 interface DashboardState {
   region: RegionId
-  sites: SuggestedSite[]
   selectedLightId: string | null
   searchQuery: string
   viewState: ViewState
@@ -53,21 +52,17 @@ interface DashboardState {
   flyTo: (lat: number, lng: number, zoom?: number) => void
   setInfraMode: (on: boolean) => void
   toggleInfraMode: () => void
-  selectSite: (id: string | null) => void
+  // Candidate sites are derived from the live network by toInfraSites, so the
+  // caller passes the coordinates it already has rather than the store keeping
+  // a second copy of the list to look them up in.
+  selectSite: (id: string | null, lat?: number, lng?: number) => void
   rescanSites: () => void
 }
-
-const rand = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min
-
-const clamp = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n))
-
-const byScore = (a: SuggestedSite, b: SuggestedSite) => b.score - a.score
 
 const initial = regions[DEFAULT_REGION]
 
 export const useDashboardStore = create<DashboardState>((set, get) => ({
   region: DEFAULT_REGION,
-  sites: [...initial.sites].sort(byScore),
   selectedLightId: null,
   searchQuery: '',
   viewState: initial.center,
@@ -82,7 +77,6 @@ export const useDashboardStore = create<DashboardState>((set, get) => ({
     const region = regions[id]
     set({
       region: id,
-      sites: [...region.sites].sort(byScore),
       selectedLightId: null,
       selectedSiteId: null,
       searchQuery: '',
@@ -117,26 +111,20 @@ export const useDashboardStore = create<DashboardState>((set, get) => ({
 
   toggleInfraMode: () => get().setInfraMode(!get().infraMode),
 
-  selectSite: (id) => {
+  selectSite: (id, lat, lng) => {
     set({ selectedSiteId: id })
-    const site = get().sites.find((s) => s.id === id)
-    if (site) {
-      get().flyTo(site.lat, site.lng, 16.5)
+    if (id !== null && lat !== undefined && lng !== undefined) {
+      get().flyTo(lat, lng, 16.5)
     }
   },
 
-  // Re-runs the ranker against the current feed. Scores drift slightly because
-  // the live pressure/speed inputs have moved since the last pass.
+  // The ranking is recomputed from the feed on every snapshot, so there is
+  // nothing here to kick off -- this only runs the scanning affordance so the
+  // button reads as doing something. It used to nudge each score by a random
+  // few points, which made a live measurement look like a fresh model run.
   rescanSites: () => {
     if (get().scanning) return
     set({ scanning: true })
-    setTimeout(() => {
-      set((state) => ({
-        scanning: false,
-        sites: state.sites
-          .map((s) => ({ ...s, score: clamp(s.score + rand(-4, 4), 10, 99) }))
-          .sort(byScore),
-      }))
-    }, 1400)
+    setTimeout(() => set({ scanning: false }), 900)
   },
 }))

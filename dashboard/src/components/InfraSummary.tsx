@@ -1,6 +1,8 @@
+import { useMemo } from 'react'
 import { Sparkles, Layers, SlidersHorizontal } from 'lucide-react'
 import { useDashboardStore } from '../store/useDashboardStore'
 import { useLiveStore } from '../store/useLiveStore'
+import { toInfraSites } from '../utils/infraSites'
 import { kindLabel, getPriority, priorityColor, priorityLabel } from '../utils/sites'
 import type { SuggestedSite } from '../types'
 
@@ -11,20 +13,24 @@ const kinds: SuggestedSite['kind'][] = [
   'camera-upgrade',
 ]
 
-// Model inputs, in the order the ranker weights them.
+// What the ranker actually reads, in the order it weights them. Every one is a
+// measured quantity off the live feed -- there is no model behind this, and the
+// numbers on each card are the size of the problem, not a predicted saving.
 const rankingInputs: [string, string][] = [
-  ['Pressure imbalance', 'far vs near, per cycle'],
-  ['Speed deficit', 'observed vs OSM free-flow'],
-  ['Spillback frequency', 'queue overruns per peak hour'],
-  ['Corridor coupling', 'offset drift between neighbours'],
-  ['Deployment cost', 'capex per second of delay saved'],
+  ['Speed deficit', 'observed speed vs the segment limit (70%)'],
+  ['Road occupancy', 'how full the segment is, spillback included (20%)'],
+  ['Road width', 'lanes going to waste while it is blocked (10%)'],
+  ['Downstream junction', 'sets the intervention: re-sync, new signal or mid-road'],
+  ['Segment length', 'anything under 40 m has no room for a unit'],
 ]
 
 // Right rail of the Traffic Light Suggestor.
 export default function InfraSummary() {
-  const sites = useDashboardStore((s) => s.sites)
+  const network = useLiveStore((s) => s.network)
+  const liveSegments = useLiveStore((s) => s.segments)
+  const sites = useMemo(() => toInfraSites(network, liveSegments), [network, liveSegments])
   // Coverage is measured against the canonical network the feed reports on.
-  const segments = useLiveStore((s) => s.network?.segments ?? [])
+  const segments = network?.segments ?? []
   const selectedSiteId = useDashboardStore((s) => s.selectedSiteId)
 
   const selected = sites.find((s) => s.id === selectedSiteId) ?? null
@@ -47,8 +53,8 @@ export default function InfraSummary() {
 
         <div className="grid grid-cols-2 gap-1.5">
           <Stat label="Candidate sites" value={String(sites.length)} />
-          <Stat label="Avg delay saved" value={`−${avgDelay}%`} accent="#2FA98C" />
-          <Stat label="Throughput gain" value={`+${throughput}/h`} accent="#2FA98C" />
+          <Stat label="Avg speed deficit" value={`${avgDelay}%`} accent="#E4674F" />
+          <Stat label="Capacity shortfall" value={`${throughput}/h`} accent="#E4674F" />
           <Stat label="Segment coverage" value={`${coverage}%`} />
         </div>
 
@@ -107,11 +113,11 @@ export default function InfraSummary() {
             <div className="text-[10px] text-muted mb-2">
               {selected.id} · {kindLabel[selected.kind]}
             </div>
-            <Row label="Model score" value={String(selected.score)} />
+            <Row label="Site score" value={String(selected.score)} />
             <Row label="Priority" value={priorityLabel[getPriority(selected.score)]} />
-            <Row label="Avg delay" value={`−${selected.delaySaving}%`} />
-            <Row label="Peak queue" value={`−${selected.queueSaving}%`} />
-            <Row label="Throughput" value={`+${selected.throughputGain} veh/h`} />
+            <Row label="Speed deficit" value={`${selected.delaySaving}%`} />
+            <Row label="Road occupied" value={`${selected.queueSaving}%`} />
+            <Row label="Capacity short" value={`${selected.throughputGain} veh/h`} />
             <Row label="Est. capex" value={selected.cost} />
             <Row label="Status" value={selected.status.replace('-', ' ')} />
             <Row label="Relieves" value={selected.affectedSegments.join(', ')} />
@@ -128,8 +134,8 @@ export default function InfraSummary() {
               </div>
             ))}
             <p className="text-[10px] text-faint leading-snug mt-2">
-              Scores are recomputed from the live GNSS, FCD and camera feeds joined onto the
-              OSM road graph. Select a site for its full breakdown.
+              Recomputed from the simulation feed on every snapshot, so the ranking moves
+              as the network congests. Select a site for its full breakdown.
             </p>
           </div>
         )}

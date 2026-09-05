@@ -1,10 +1,17 @@
+import { useMemo } from 'react'
 import { MapPin } from 'lucide-react'
 import { useDashboardStore } from '../store/useDashboardStore'
+import { useLiveStore } from '../store/useLiveStore'
+import { toInfraSites } from '../utils/infraSites'
 import SiteCard from './SiteCard'
 
 // Left rail of the Traffic Light Suggestor: ranked candidate sites.
 export default function InfraPanel() {
-  const sites = useDashboardStore((s) => s.sites)
+  const network = useLiveStore((s) => s.network)
+  const liveSegments = useLiveStore((s) => s.segments)
+  const feedStatus = useLiveStore((s) => s.status)
+  const sites = useMemo(() => toInfraSites(network, liveSegments), [network, liveSegments])
+
   const searchQuery = useDashboardStore((s) => s.searchQuery)
   const selectedSiteId = useDashboardStore((s) => s.selectedSiteId)
   const selectSite = useDashboardStore((s) => s.selectSite)
@@ -29,7 +36,8 @@ export default function InfraPanel() {
         </h2>
       </div>
       <p className="text-[10px] text-faint leading-snug mb-2.5">
-        Ranked by predicted network gain. Click a site to ping it on the map.
+        One candidate per road, placed at the segment's midpoint and ranked by how
+        far below its limit that road is running. Click a site to ping it on the map.
       </p>
 
       {scanning && (
@@ -38,7 +46,13 @@ export default function InfraPanel() {
         </div>
       )}
 
-      {filtered.length === 0 ? (
+      {sites.length === 0 ? (
+        <p className="text-[11px] text-faint mt-4 text-center leading-relaxed">
+          {feedStatus === 'live'
+            ? 'No segments long enough to site a unit on.'
+            : 'Waiting for the feed — start the simulation and the bridge.'}
+        </p>
+      ) : filtered.length === 0 ? (
         <p className="text-[11px] text-faint mt-4 text-center">
           No candidate sites match “{searchQuery}”.
         </p>
@@ -49,7 +63,11 @@ export default function InfraPanel() {
             site={site}
             rank={sites.indexOf(site) + 1}
             isActive={site.id === selectedSiteId}
-            onSelect={() => selectSite(site.id === selectedSiteId ? null : site.id)}
+            onSelect={() =>
+              site.id === selectedSiteId
+                ? selectSite(null)
+                : selectSite(site.id, site.lat, site.lng)
+            }
           />
         ))
       )}
